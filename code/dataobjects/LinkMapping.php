@@ -78,11 +78,11 @@ class LinkMapping extends DataObject {
 
 	public function fieldLabels() {
 		return parent::fieldLabels() + array(
-			'MappedLinkHeader' => _t('LinkMapping.MAPPEDLINK', 'Mapped Link'),
-			'RedirectToHeader' => _t('LinkMapping.REDIRECTTO', 'Redirect To'),
-			'RedirectionType'  => _t('LinkMapping.REDIRECTIONTYPE', 'Redirection type'),
-			'RedirectToPage'   => _t('LinkMapping.REDIRTOPAGE', 'Redirect to a page'),
-			'RedirectToLink'   => _t('LinkMapping.REDIRTOLINK', 'Redirect to a link')
+			'MappedLinkHeader' => 'Mapped Link',
+			'RedirectToHeader' => 'Redirect To',
+			'RedirectionType'  => 'Redirection type',
+			'RedirectToPage'   => 'Redirect to a page',
+			'RedirectToLink'   => 'Redirect to a link'
 		);
 	}
 
