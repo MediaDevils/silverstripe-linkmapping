@@ -17,8 +17,7 @@ class LinkMappingFrontController extends ModelAsController {
 			throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
 		}
 
-		// Find page by link, regardless of current locale settings
-		Translatable::disable_locale_filter();
+		// Find page by link
 		$sitetree = DataObject::get_one(
 			'SiteTree',
 			sprintf(
@@ -27,7 +26,6 @@ class LinkMappingFrontController extends ModelAsController {
 				(SiteTree::nested_urls() ? 'AND "ParentID" = 0' : null)
 			)
 		);
-		Translatable::enable_locale_filter();
 
 		if(!$sitetree) {
 			// first check for a link mapping to direct away to.
@@ -72,9 +70,6 @@ class LinkMappingFrontController extends ModelAsController {
 				$this->httpError(404, 'The requested page could not be found.');
 			}
 		}
-
-		// Enforce current locale setting to the loaded SiteTree object
-		if($sitetree->Locale) Translatable::set_current_locale($sitetree->Locale);
 
 		if(isset($_REQUEST['debug'])) {
 			Debug::message("Using record #$sitetree->ID of type $sitetree->class with link {$sitetree->Link()}");
